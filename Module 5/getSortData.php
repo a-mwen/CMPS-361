@@ -31,11 +31,12 @@ if ($data && is_array($data)) {
 
     // Sort the data based on column and order
     usort($data, function($a, $b) use ($sortColumn, $sortOrder) {
-        if ($sortOrder == 'asc') {
-            return strcmp($a[$sortColumn], $b[$sortColumn]);
-        } else {
-            return strcmp($b[$sortColumn], $a[$sortColumn]);
+        // Compare numeric values for the 'id' column
+        if ($sortColumn === 'id') {
+            return $sortOrder === 'asc' ? $a[$sortColumn] - $b[$sortColumn] : $b[$sortColumn] - $a[$sortColumn];
         }
+        // For string comparison
+        return $sortOrder === 'asc' ? strcmp($a[$sortColumn], $b[$sortColumn]) : strcmp($b[$sortColumn], $a[$sortColumn]);
     });
 
     // Calculate the starting index for the current page
@@ -53,10 +54,10 @@ if ($data && is_array($data)) {
     echo "<table border='1' cellpadding='10'>";
     echo "<thead>";
     echo "<tr>";
-    echo "<th><a href='?sort=id&order=" . toggleOrder($sortOrder) . "'>ID</a></th>";
-    echo "<th><a href='?sort=team&order=" . toggleOrder($sortOrder) . "'>Team</a></th>";
-    echo "<th><a href='?sort=supervisor&order=" . toggleOrder($sortOrder) . "'>Supervisor</a></th>";
-    echo "<th><a href='?sort=city&order=" . toggleOrder($sortOrder) . "'>City</a></th>";
+    echo "<th><a href='?page=$currentPage&sort=id&order=" . toggleOrder($sortOrder) . "'>ID</a></th>";
+    echo "<th><a href='?page=$currentPage&sort=team&order=" . toggleOrder($sortOrder) . "'>Team</a></th>";
+    echo "<th><a href='?page=$currentPage&sort=supervisor&order=" . toggleOrder($sortOrder) . "'>Supervisor</a></th>";
+    echo "<th><a href='?page=$currentPage&sort=city&order=" . toggleOrder($sortOrder) . "'>City</a></th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -79,14 +80,21 @@ if ($data && is_array($data)) {
 
     // Previous page link
     if ($currentPage > 1) {
-        $prevPage = $currentPage - 1;
-        echo "<a href='?page=$prevPage'>Previous</a> ";
+        echo '<a href="?page=' . ($currentPage - 1) . '&sort=' . $sortColumn . '&order=' . $sortOrder . '">Previous</a> ';
+    }
+
+    // Display page numbers
+    for ($i = 1; $i <= $totalPages; $i++) {
+        if ($i == $currentPage) {
+            echo "<strong>$i</strong> ";
+        } else {
+            echo '<a href="?page=' . $i . '&sort=' . $sortColumn . '&order=' . $sortOrder . '">' . $i . '</a> ';
+        }
     }
 
     // Next page link
     if ($currentPage < $totalPages) {
-        $nextPage = $currentPage + 1;
-        echo "<a href='?page=$nextPage'>Next</a>";
+        echo '<a href="?page=' . ($currentPage + 1) . '&sort=' . $sortColumn . '&order=' . $sortOrder . '">Next</a>';
     }
 
     echo "</div>";
