@@ -1,0 +1,166 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 20px;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #e0e0e0;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease;
+}
+
+th a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+th a:hover {
+    color: #ffdd57;
+}
+
+/* Row striping */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #eaf0f7;
+    transition: background-color 0.3s ease;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pagination strong {
+    margin: 0 5px;
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Total Records */
+.total-records {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #007bff;
+}.search-box {
+    margin-right: 20px; /* Space between search box and filter */
+}
+
+.search-container label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Full width */
+    max-width: 300px; /* Limit the width */
+    transition: border-color 0.3s ease;
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #007bff; 
+    outline: none; 
+}
+/* Filter Container */
+.filter-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Filter Labels */
+.filter-container label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-bottom: 10px; /* Space for mobile */
+}
+
+/* Dropdown Styling */
+.filter-container select {
+    padding: 8px 10px; /* Reduced padding */
+    font-size: 14px; /* Slightly smaller font */
+    border: 2px solid #6a82fb; /* Same border as search input */
+    border-radius: 20px; /* Slightly smaller radius */
+    transition: border-color 0.3s;
+    margin-right: 20px; /* Space between dropdowns */
+}
+
+/* Dropdown Focus */
+.filter-container select:focus {
+    border-color: #3a0ca3;
+    outline: none;
+}
+
+/* Button Styles */
+button {
+    padding: 8px 10px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Round corners */
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #218838; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
